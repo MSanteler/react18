@@ -1,0 +1,9 @@
+sudo: requred
+services:
+  - docker
+
+before_install:
+  - docker build -t msanteler/react18 -f Dockerfile.dev .
+
+script:
+  - docker run msanteler/react18 npm run test -- --coverage
