@@ -7,3 +7,16 @@ before_install:
 
 script:
   - docker run msanteler/react18 npm run test -- --coverage
+
+deploy:
+  provider: elasticbeanstalk
+  region: "us-west-2"
+  app: "react18"
+  env: "React18-env"
+  bucket_name: "elasticbeanstalk-us-west-2-922133495731"
+  bucket_path: "react18"
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key_id:
+    secure: "$AWS_SECRET_ACCESS_KEY"
